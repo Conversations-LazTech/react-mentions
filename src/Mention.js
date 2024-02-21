@@ -31,7 +31,7 @@ const Mention = ({
     )
 
     console.log('ALOO ~ Mention ~ isNotMismatched:', isNotMismatched)
-    if (isNotMismatched)
+    if (!isNotMismatched)
       return (
         <strong {...styles} color={mismatchColor}>
           {display}
