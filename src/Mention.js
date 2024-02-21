@@ -14,7 +14,7 @@ const Mention = ({
   data,
   mismatchStyles,
 }) => {
-  console.log("ALOO ~ Mention ~ style:", style)
+  console.log('ALOO ~ Mention ~ style:', style)
   const styles = useStyles(defaultStyle, { style, className, classNames })
   console.log('ALOO ~ Mention ~ styles:', { ...styles })
 
@@ -25,21 +25,22 @@ const Mention = ({
   const isDataArray = data instanceof Array
   console.log('ALOO ~ Mention ~ isDataArray:', isDataArray)
 
+  const dis = display.replace('[', '').replace(']', '')
+  console.log('ALOO ~ Mention ~ dis:', dis)
   if (data instanceof Array) {
-    const isNotMismatched = data.find(
-      (d) =>
-        display in d && d.display === display.replace('[', '').replace(']', '')
-    )
+    const isNotMismatched = data.find((d) => {
+      console.log('ALOO ~ Mention ~ d:', d)
+      if (d.display === dis) return d
+    })
 
     console.log('ALOO ~ Mention ~ isNotMismatched:', isNotMismatched)
     console.log('ALOO ~ Mention ~ !isNotMismatched:', !isNotMismatched)
-    if (!isNotMismatched)
-      return (
-        <strong {...styles} style={mismatchStyles}>
-          {display}
-        </strong>
-      )
+    if (!isNotMismatched) {
+      console.log('ALOO ~ Mention ~ returning mismatched')
+      return <strong {...{ ...styles, ...mismatchStyles }}>{display}</strong>
+    }
   }
+  console.log('ALOO ~ Mention ~ returning matched')
   return <strong {...styles}>{display}</strong>
 }
 
