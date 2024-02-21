@@ -6,9 +6,9 @@ const defaultStyle = {
   fontWeight: 'inherit',
 }
 
-const Mention = ({ display, style, className, classNames }) => {
+const Mention = ({ display, style, className, classNames, data, mismatchColor }) => {
   const styles = useStyles(defaultStyle, { style, className, classNames })
-  return <strong {...styles}>{display}</strong>
+  return <strong {...styles} color={data.includes(display.toLowerCase()) ? mismatchColor : undefined}>{display}</strong>
 }
 
 Mention.propTypes = {
@@ -45,7 +45,7 @@ Mention.propTypes = {
 Mention.defaultProps = {
   trigger: '@',
   markup: '@[__display__](__id__)',
-  displayTransform: function(id, display) {
+  displayTransform: function (id, display) {
     return display || id
   },
   onAdd: () => null,
