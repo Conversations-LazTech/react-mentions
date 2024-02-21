@@ -37,7 +37,11 @@ const Mention = ({
     console.log('ALOO ~ Mention ~ !isNotMismatched:', !isNotMismatched)
     if (!isNotMismatched) {
       console.log('ALOO ~ Mention ~ returning mismatched')
-      return <strong {...{ ...styles, ...mismatchStyles }}>{display}</strong>
+      return (
+        <strong style={{ ...styles.style, ...mismatchStyles }}>
+          {display}
+        </strong>
+      )
     }
   }
   console.log('ALOO ~ Mention ~ returning matched')
