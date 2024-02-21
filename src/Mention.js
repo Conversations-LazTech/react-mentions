@@ -14,9 +14,13 @@ const Mention = ({
   data,
   mismatchColor,
 }) => {
+  console.log('ALOO ~ Mention ~ display:', display)
   console.log('ALOO ~ Mention ~ data:', data)
   const styles = useStyles(defaultStyle, { style, className, classNames })
-  if (data instanceof Array && data.includes(display.toLowerCase())) {
+  if (
+    data instanceof Array &&
+    data.find((d) => display in d && d.display === display)
+  ) {
     return (
       <strong {...styles} color={mismatchColor}>
         {display}
@@ -55,6 +59,7 @@ Mention.propTypes = {
   allowSpaceInQuery: PropTypes.bool,
 
   isLoading: PropTypes.bool,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
 }
 
 Mention.defaultProps = {
