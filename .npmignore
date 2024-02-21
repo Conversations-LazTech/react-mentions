@@ -6,5 +6,5 @@ test
 .babelrc
 .travis.yml
 Gruntfile.js
-react-mentions.sublime-project
+react-mentions-extended.sublime-project
 .grunt

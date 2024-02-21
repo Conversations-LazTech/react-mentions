@@ -1,4 +1,4 @@
-# react-mentions
+# react-mentions-extended
 
 ## 4.4.10
 

@@ -12,7 +12,7 @@ function fetchUsers(query, callback) {
   fetch(`https://api.github.com/search/users?q=${query}`, { json: true })
     .then(res => res.json())
 
-    // Transform the users to what react-mentions expects
+    // Transform the users to what react-mentions-extended expects
     .then(res =>
       res.items.map(user => ({ display: user.login, id: user.login }))
     )
